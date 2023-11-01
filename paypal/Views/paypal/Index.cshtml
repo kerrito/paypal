@@ -1,0 +1,24 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model decimal?
+
+<h2 class="text-center fw-bold mb-3">Enter PayPal Payment</h2>
+
+<form asp-controller="PayPal" asp-action="CreateOrder" method="post">
+    <div class="mb-3">
+        <label for="payment" class="fw-bold mb-2 h4">Enter Payment :</label>
+        <input type="number" step="0.01" name="payment" class="form-control" value="@Model">
+    </div>
+    <div class="mb-3">
+        <label for="submit" class="fw-bold mb-2 h4">Submit :</label>
+        <button type="submit" class="btn btn-info form-control">Submit</button>
+    </div>
+</form>
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <p class="text-danger">@TempData["ErrorMessage"]</p>
+}
